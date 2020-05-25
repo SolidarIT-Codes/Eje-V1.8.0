@@ -1,0 +1,40 @@
+page-profil {
+
+
+    .header{
+        height: 180px;
+    background-color: #a71f1f;
+    padding-top: 1px;
+}
+.header h2{
+    margin-top: 1.8rem;
+    font-size: 2.4rem;
+    color: #f7f2e8;
+    font-weight: bold;
+    text-align: center;
+}
+
+.img-box{
+    height: 18opx;
+    width: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.border-white{
+    border-radius: 50%;
+    border: 3px solid white;
+    width: fit-content;
+}
+
+.border-red{
+    border-radius: 50%;
+    border: 7px solid #a71f1f;
+    width: fit-content;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    margin-top: -90px;
+}
+    }
+

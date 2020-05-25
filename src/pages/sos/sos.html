@@ -1,0 +1,46 @@
+
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Alerte Generale</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<h4>Renseigner de façon sucsinte  les informations çi dessous</h4>
+<br><br>
+  <ion-list>
+    <ion-item>
+      <ion-label>Groupe Rechercher : <span style="color: darkred;">*</span></ion-label>
+      <ion-select [(ngModel)]="groupe">
+        <ion-option value="A">A</ion-option>
+        <ion-option value="B">B</ion-option>
+        <ion-option value="O">O</ion-option>
+        <ion-option value="AB">AB</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Rhesus Rechercher : <span style="color: darkred;">*</span></ion-label>
+      <ion-select [(ngModel)]="rh">
+        <ion-option value="+">+</ion-option>
+        <ion-option value="-">-</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hôpital concerné : <span style="color: darkred;">*</span></ion-label>
+      <ion-select [(ngModel)]="hosto">
+        <div *ngFor="let blad of blads">
+          <ion-option value="{{blad.Nom}}">{{blad.Nom}}</ion-option>
+        </div>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Numero à contacter : <span style="color: darkred;">*</span></ion-label>
+      <ion-input type="number" [(ngModel)]="num"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button (click)="send()">Lancer l'alerte</button>
+</ion-content>

@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar color="light">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>Recherche</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+          <ion-col col-6><ion-list>
+              <ion-item>
+                <ion-label>Groupe</ion-label>
+                <ion-select [(ngModel)]="groupe">
+                  <ion-option value="A">A</ion-option>
+                  <ion-option value="B">B</ion-option>
+                  <ion-option value="O">O</ion-option>
+                  <ion-option value="AB">AB</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-list></ion-col>
+            <ion-col col-6><ion-list>
+                <ion-item>
+                  <ion-label>Rhesus</ion-label>
+                  <ion-select [(ngModel)]="rh">
+                    <ion-option value="+">+</ion-option>
+                    <ion-option value="-">-</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list></ion-col>
+        </ion-row>
+        <button ion-button round (click)="search()"><ion-icon name="md-search"></ion-icon></button>
+
+        <div >
+        <div *ngFor="let blad of blads">
+
+            <ion-item>
+              <hr>
+              <ion-card>
+                <ion-card-header >
+                    <h2 >Banque de Sang : {{blad.proprietaire}}</h2> 
+                  </ion-card-header>
+                
+                  <ion-card-content>
+                    <h3>Groupe : {{blad.groupe}}</h3>
+                    <h3>Rhesus : {{blad.rhesus}}</h3>
+                    <h3>Quantité : {{blad.quantite}}</h3>
+                    
+                  </ion-card-content>
+                <button ion-button (click)="openWebpage()">Lancer une commande&nbsp;&nbsp;
+                  <ion-icon name="logo-dropbox"></ion-icon>
+                  
+                </button>
+                </ion-card>
+            </ion-item>
+          </div>
+          <hr>
+          <div *ngFor="let blod of blods">
+
+            <ion-item>
+              <hr>
+              <ion-card>
+                <ion-card-header >
+                    <h2 > {{blod.Nom}}</h2> 
+                    <h3> {{blod.Prenom}}</h3>
+                  </ion-card-header>
+                
+                  <ion-card-content>
+                    <h3>Groupe : {{blod.Groupe}}</h3>
+                    <h3>Rhesus : {{blod.rhesus}}</h3>
+                    
+                    
+                  </ion-card-content>
+                <button  color="secondary" ion-button (click)="call(blod.numero)">Appeler&nbsp;&nbsp;
+                  <ion-icon name="ios-call"></ion-icon>
+                </button>
+                </ion-card>
+            </ion-item>
+          </div>
+        </div>
+
+      </ion-grid>
+    
+      <div text-center *ngIf="badge">
+        <br><br>
+        <h2>{{badge}}</h2>
+        
+      </div>
+      <div>
+        <button ion-button (click)="opensos()">Lancer une alerte Génerale&nbsp;&nbsp;
+          <ion-icon name="logo-dropbox"></ion-icon>
+          
+        </button>
+      </div>
+</ion-content>

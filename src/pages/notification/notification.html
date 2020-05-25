@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-navbar color="light">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Notification</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div>
+    <ion-segment style="color: lightcoral;" [(ngModel)]="pet">
+      <!--<ion-segment-button  value="kittens">
+        Alertes
+      </ion-segment-button>-->
+      <ion-segment-button value="holi">
+        En cours
+      </ion-segment-button>
+      <ion-segment-button value="puppies">
+        Historique
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <div [ngSwitch]="pet">
+    
+  
+   <!-- <ion-list *ngSwitchCase="'kittens'">
+      <div text-center *ngIf="badge">
+        <br><br>
+        <h2>{{badge}}</h2>
+        <br><br>
+        <img src="/assets/img/trans.png" >
+      </div>
+        <div *ngFor="let info of infos">
+          <br><br>
+      <ion-item>
+        <ion-card>
+          <ion-card-header >
+              <h2 color="red">Poche de Sang</h2> 
+            </ion-card-header>
+          
+            <ion-card-content>
+              
+              <i>De</i> <h2>L'HOPITAL : {{info.commandeur}}</h2>
+              <hr><i>Vers</i>
+
+              <h2>BANQUE DE SANG : {{info.destination}}</h2>
+              
+              <button ion-button full (click)="take(info.id)">
+                <ion-icon name="md-arrow-dropright-circle"></ion-icon>
+                Accepter la course</button>
+            </ion-card-content>
+          </ion-card>
+      </ion-item>
+    </div>
+    <div>
+      <button ion-button (click)="notif()">test notif</button>
+    </div>
+    </ion-list>-->
+
+
+    <ion-list *ngSwitchCase="'puppies'">
+      <br>
+        <div text-center *ngIf="cadge">
+          <br><br>
+          <h2>{{cadge}}</h2>
+          <br><br>
+          <img src="/assets/img/trans.png" >
+        </div>
+      <div *ngFor="let histo of histos">
+
+        
+
+        <ion-item>
+          <ion-card>
+            <ion-card-header ><ion-item>
+              <ion-thumbnail item-start>
+                <img src="/assets/img/ok.png">
+              </ion-thumbnail><br>
+              <h2>Effectuer</h2>
+            </ion-item> 
+              </ion-card-header>
+            
+              <ion-card-content>
+                
+                <h2>Commandeur : {{histo.Commandeur}}</h2>
+                <h3>Destination : {{histo.Destination}}</h3>
+              </ion-card-content>
+            </ion-card>
+        </ion-item>
+      </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'holi'">
+      <br><br>
+        <div text-center *ngIf="dadge">
+          <br><br>
+          <h2>{{dadge}}</h2>
+          <br><br>
+          <img src="/assets/img/trans.png" >
+        </div>
+      <div *ngFor="let load of loads">
+
+        
+        <ion-item>
+          <ion-card>
+              <ion-card-content>
+                <h2>HOPITAL : {{load.Commandeur}}</h2>
+                <button ion-button  round icon-left (click)="openmap(load.lati,load.longi)">
+                  <ion-icon name="flag"></ion-icon>
+                </button>
+                <hr>
+                <h2>BANQUE DE SANG : {{load.Destination}}</h2>
+                <button ion-button round icon-left (click)="openmap(load.Destlati,load.Destlongi)">
+                  <ion-icon name="flag"></ion-icon>
+                </button>
+              </ion-card-content>
+            </ion-card>
+        </ion-item>
+      </div>
+        <button ion-button  full icon-left (click)="openmap()">
+          <ion-icon name="flag"></ion-icon>
+        </button>
+    </ion-list>
+        
+  </div>
+</ion-content>

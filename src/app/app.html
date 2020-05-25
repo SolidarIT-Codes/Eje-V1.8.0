@@ -1,0 +1,41 @@
+<ion-menu [content]="content">
+    <ion-header >
+      <ion-toolbar color="light">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content padding color="light">
+      <ion-list>
+        <button ion-item (click)="home()">
+          <ion-icon name="home" start></ion-icon>
+          &nbsp;&nbsp;&nbsp; Accueil   
+      </button>
+        <button ion-item (click)="share()">
+            <ion-icon name="md-share" start></ion-icon>
+            &nbsp;&nbsp;&nbsp;    Inviter un ami
+        </button>
+        <button ion-item (click)=" openwhatsapp()">
+            <ion-icon name="logo-facebook" start></ion-icon>
+          &nbsp;&nbsp;&nbsp;Nous contacter 
+        </button>
+        <button ion-item (click)="apropos()">
+            <ion-icon name="md-information-circle" start></ion-icon> 
+            &nbsp;&nbsp;&nbsp;A Propos
+        </button>
+        <button ion-item (click)="openmention()">
+            <ion-icon name="md-document" start></ion-icon>  
+            &nbsp;&nbsp;&nbsp;Mentions légales
+          </button>
+          <button ion-item (click)="openPage(eventsPage)">
+            <ion-icon name="md-help" start></ion-icon> 
+            &nbsp;&nbsp;&nbsp; Comment ça marche
+          </button>
+          <hr>
+          <button ion-item (click)="logout()">
+            <ion-icon name="md-power" start></ion-icon>
+            &nbsp;&nbsp;&nbsp; Deconnexion
+          </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

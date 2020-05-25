@@ -1,0 +1,231 @@
+<ion-content>
+  <div class="header">
+    <h2>{{ nom }} {{ prenom }}</h2>
+  </div>
+
+                <div class="flex">
+                  <div class="border-red">
+                    <div class="border-white">
+                          <div class="img-box">
+                            <img src="/assets/img/use.png" >
+                          </div>
+                    </div>
+              </div>
+                </div>
+              
+          
+
+  <br>
+    <ion-card>
+      <ion-title><strong>PROFIL: <span text-uppercase>{{ statut }}</span> </strong></ion-title>
+      </ion-card>
+
+      <div padding *ngIf="statut == 'medecin'">
+        Activité récente
+        <div padding>
+          <ion-segment [(ngModel)]="pet">
+            <ion-segment-button value="sos">
+              Sos
+            </ion-segment-button>
+            <ion-segment-button value="histo">
+              Sos Historique
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+        
+        <div [ngSwitch]="pet">
+          <ion-list *ngSwitchCase="'sos'">
+            <ion-item>
+              <div *ngFor="let info of infos" padding>
+        
+                <ion-card>
+                  <ion-card-content>
+                    <ion-card-title>SOS du {{info.date}}</ion-card-title>
+                      <p text-wrap>L'hôpital {{info.hosto}} recherche urgement un donneur du groupe
+                        {{info.Groupe}} {{info.rh}} <br><br>
+                      </p><br><br>
+                      <button ion-button (click)="off(info.id)">Desactivé</button>
+                  </ion-card-content>
+                </ion-card>
+                    </div>
+              </ion-item>
+          </ion-list>
+            
+          <ion-list *ngSwitchCase="'histo'">
+            <ion-item>
+              <div *ngFor="let dios of dioso" padding>
+        
+                <ion-card>
+                  <ion-card-content>
+                    <ion-card-title>SOS du {{dios.date}}</ion-card-title>
+                      <p text-wrap>L'hôpital {{dios.hosto}} recherche urgement un donneur du groupe
+                        {{dios.Groupe}} {{dios.rh}} <br><br>
+                      </p><br>
+                  </ion-card-content>
+                </ion-card>
+                    </div>
+            </ion-item>
+            
+          </ion-list>
+        </div>
+      
+          </div>
+            
+            <div padding *ngIf="statut != 'individu'">
+
+              <b >AGENDA</b>
+
+              <div text-center *ngIf="errortext">
+                <br><br>
+                <h2>{{errortext}}</h2>
+                <img src="/assets/img/home.png" >
+              </div>
+
+            <div *ngFor="let ido of idos" padding>
+              
+                <ion-card>
+                  <ion-card-content>
+                    <ion-card-title>
+                        {{ido.titre}} 
+                      </ion-card-title>
+                      <div>
+                        <h2>Date: <i><b>{{ido.moment}}</b></i></h2>
+                        <h2>Ville: <b>{{ido.ville}}</b> </h2>
+                      <h2>Heure : <b>{{ido.heure}}</b></h2>
+                      <h2>Description :</h2>
+                      <p text-wrap>{{ido.description}}</p>
+                      </div>        
+                    <hr>
+                    
+                    <div *ngIf="statut != 'individu'">
+                      <button ion-button (click)="scan()">Scan &nbsp;<ion-icon name="ios-qr-scanner"></ion-icon></button>
+                    </div>
+                    
+                  </ion-card-content>
+                </ion-card>
+                    
+                    <div *ngIf="scannedCode">
+                      Resultat est : {{ scannedCode }}
+                    </div>
+                  </div>
+
+            </div>
+            
+
+
+
+
+
+
+
+
+      
+      <div *ngIf="statut == 'donneur' || statut == 'medecin' ">
+
+        <div *ngFor="let moye of moyes">
+          <div *ngIf="moye.moy <= '30'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px">
+           </div>
+          </div>
+          <div *ngIf="moye.moy == '40'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+           </div>
+         </div>
+         <div *ngIf="moye.moy == '50'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px">
+           </div>
+         </div><div *ngIf="moye.moy == '60'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px">
+           </div>
+         </div><div *ngIf="moye.moy == '70'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px">
+           </div>
+         </div>
+         <div *ngIf="moye.moy == '80'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+           </div>
+         </div>
+         <div *ngIf="moye.moy == '90'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+           </div>
+         </div>
+         <div *ngIf="moye.moy == '100'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px">
+           </div>
+           
+         </div>
+             </div>
+      </div>
+      
+      <div *ngIf="statut == 'transporteur'">
+        
+
+        <div *ngFor="let moie of moies">
+          <div *ngIf="moie.moy <= '30'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px">
+           </div>
+          </div>
+          <div *ngIf="moie.moy == '40'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+           </div>
+         </div>
+         <div *ngIf="moie.moy == '50'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px">
+           </div>
+         </div><div *ngIf="moie.moy == '60'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px">
+           </div>
+         </div><div *ngIf="moie.moy == '70'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px">
+           </div>
+         </div>
+         <div *ngIf="moie.moy == '80'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+           </div>
+         </div>
+         <div *ngIf="moie.moy == '90'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+           </div>
+         </div>
+         <div *ngIf="moie.moy == '100'">
+           <div class="row">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px"><img src="/assets/img/star.png" width="35px">
+             <img src="/assets/img/star.png" width="35px">
+           </div>
+           
+         </div>
+             </div>
+      </div>
+
+      <div *ngIf="scannedCode">
+        Resultat est : {{ scannedCode }}
+      </div>
+</ion-content>

@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Inscription</ion-title>
+  </ion-navbar>
+</ion-header>
+<br><br><br><br>
+<ion-content padding>
+  <br><br>
+  <ion-list>
+
+      <ion-item>
+          <ion-label>Statut : <span style="color: darkred;">*</span></ion-label>
+          <ion-select [(ngModel)]="Statut">
+            <!--<ion-option value="individu">Standard</ion-option>-->
+            <ion-option value="donneur">Donneur</ion-option>
+            <ion-option value="transporteur">Transporteur</ion-option>
+            <ion-option value="medecin">Médécin</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Nom : <span style="color: darkred;">*</span></ion-label>
+            <ion-input type="text" [(ngModel)]="Nom"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>Prénom : <span style="color: darkred;">*</span></ion-label>
+              <ion-input type="text" [(ngModel)]="Prenoms"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Date de naissance :<span style="color: darkred;">*</span></ion-label>
+                <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="Datnais" ></ion-datetime>
+              </ion-item>
+            
+
+    <ion-item>
+      <ion-label floating>Email : <span style="color: darkred;">*</span></ion-label>
+      <ion-input type="email" [(ngModel)]="Email"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>Numero : <span style="color: darkred;">*</span></ion-label>
+      <ion-input type="number" [(ngModel)]="Num"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Mot de passe : <span style="color: darkred;">*</span></ion-label>
+      <ion-input type="password" [(ngModel)]="Password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label floating>Confirmer mot de passe : <span style="color: darkred;">*</span></ion-label>
+        <ion-input type="password" [(ngModel)]="remdp"></ion-input>
+      </ion-item>
+
+
+    
+        <button ion-button  type="submit" (click)="Ajouter()" full> Envoyer </button>
+      
+  
+
+  </ion-list>
+
+  
+</ion-content>
+

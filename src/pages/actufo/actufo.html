@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-navbar color="light">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title text-center>EJE</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Chargement...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div text-center *ngIf="statut == 'transporteur'">
+    
+  <div *ngFor="let chata of chatas">
+    <br>
+<ion-item>
+  <ion-card>
+    <ion-card-header >
+      <span color="light">Alerte</span>
+        <h2 color="red">Poche de Sang</h2> 
+      </ion-card-header>
+    
+      <ion-card-content>
+        
+        <i>De</i> <h2>L'HOPITAL : {{chata.commandeur}}</h2>
+        <hr><i>Vers</i>
+
+        <h2>BANQUE DE SANG : {{chata.destination}}</h2>
+        
+        <button ion-button full (click)="take(chata.id)">
+          <ion-icon name="md-arrow-dropright-circle"></ion-icon>
+          Accepter la course</button>
+      </ion-card-content>
+    </ion-card>
+</ion-item>
+</div>
+  </div>
+
+
+
+  <div *ngFor="let info of infos">
+    <ion-card>
+      <ion-card-header ><ion-item>
+        <ion-thumbnail item-start>
+          <img src="/assets/img/sos.png">
+        </ion-thumbnail><br>
+        <h2>SOS</h2>
+      </ion-item> 
+        </ion-card-header>
+      
+        <ion-card-content>
+          <p>L'hôpital <b>{{info.hosto}}</b> recherche urgement un donneur du groupe
+           <b>{{info.Groupe}} {{info.rh}}</b>  <br>
+          </p><br>
+          <div *ngIf="statut != 'individu'">
+            <button ion-button (click)="call(info.num)">Appeler &nbsp;
+              <ion-icon name="ios-call"></ion-icon></button>
+              <button ion-button (click)="scan()">Scan &nbsp;
+                <ion-icon name="ios-barcode-outline"></ion-icon></button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+        </div>
+
+        <div text-center *ngIf="badge">
+          <br><br>
+          <h2>{{badge}}</h2>
+          <br><br>
+          <img src="/assets/img/home.png" >
+        </div>
+  
+
+    <div *ngFor="let actu of actus">
+
+      
+
+  <ion-card>
+    <img src="/assets/img/bloods.png"/>
+    <ion-card-content>
+      <ion-card-title>
+          {{actu.titre}} 
+        </ion-card-title>
+        <div>
+          <h2>Date: <i><b>{{actu.moment}}</b></i></h2>
+          <h2>Ville: <b>{{actu.ville}}</b> </h2>
+        <h2>Heure : <b>{{actu.heure}}</b></h2>
+        <h2>Description :</h2>
+   {{actu.description}}<br><br>
+        </div>  
+      <hr>
+      <div *ngIf="statut != 'individu'">
+        <button ion-button (click)="ajouter(actu.id,actu.titre,actu.moment,actu.ville,actu.heure,actu.description)">Participer &nbsp;
+          <ion-icon name="md-checkmark"></ion-icon></button>
+      </div>
+      
+    </ion-card-content>
+  </ion-card>
+      </div>
+      
+</ion-content>

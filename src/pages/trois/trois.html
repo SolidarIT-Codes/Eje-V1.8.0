@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar color="light">
+      <ion-title>Question 3</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+      <ion-card>
+          <ion-card-header>
+              Avez-vous déjà pris des drogues <br>
+              illicites par voie intraveineuse?
+          </ion-card-header>
+          <ion-card-content>
+              <ion-grid>
+                  <ion-row>
+                    <ion-col col-6><button ion-button color="secondary" (click)="oui()" round>OUI</button></ion-col>
+                    <ion-col col-6><button ion-button  color="danger" (click)="non()" round>NON</button></ion-col>
+                  </ion-row>
+                </ion-grid>
+          </ion-card-content>
+        </ion-card>
+  </ion-content>
+  

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button clear (click)="close()">Fermer</button>
+    </ion-buttons>
+    <ion-title>Carte</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+<agm-map [latitude] = "latitude"
+         [longitude] = "longitude"
+         (mapClick) = "onMapCliked($event)">
+
+         <agm-marker *ngIf="marker2"
+         [latitude] ="marker2.latitude"
+         [longitude] ="marker2.longitude"
+         [markerDraggable] ="marker2.draggable"></agm-marker>
+
+        <agm-marker *ngIf="marker"
+                    [latitude] ="marker.latitude"
+                    [longitude] ="marker.longitude"
+                    [markerDraggable] ="marker.draggable"></agm-marker>
+
+</agm-map>
+<div text-center>
+  <button ion-button round (click)="onlocateme()"> 
+    <ion-icon name="locate"></ion-icon>
+  </button>
+</div>
+</ion-content>
